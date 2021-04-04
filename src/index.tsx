@@ -49,3 +49,13 @@ const Board = (props: BoardProps) => {
     </div>
   )
 }
+
+type Step = {
+  readonly squares: BoardState
+  readonly xIsNext: boolean
+}
+
+type GameState = {
+  readonly history: readonly Step[]
+  readonly stepNumber: number
+}
