@@ -59,3 +59,25 @@ type GameState = {
   readonly history: readonly Step[]
   readonly stepNumber: number
 }
+
+const Game = () => {
+  const [state, setState] = useState<GameState>({
+    history: [
+      {
+        squares: [null, null, null, null, null, null, null, null, null],
+        xIsNext: true,
+      },
+      stepNumber: 0,
+    ]
+  })
+
+  const current = state.history[state.stepNumber]
+  const winner = calculateWinner(current.squares)
+  let status: string
+  if (winner) {
+    status = `Winner: ${winner}`
+  } else {
+    status = `Next player: ${current.xIsNext ? 'X' : 'O'}`
+}
+
+}
