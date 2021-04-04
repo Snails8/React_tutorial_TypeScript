@@ -16,3 +16,10 @@ const Square = (props: SquareProps) => (
     {props.value}
   </button>
 )
+
+type BoardState = Repeat<SquareState, 9>
+
+type BoardProps = {
+  squares: BoardState
+  onClick: (i: number) => void
+}
