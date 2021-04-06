@@ -80,4 +80,27 @@ const Game = () => {
     status = `Next player: ${current.xIsNext ? 'X' : 'O'}`
 }
 
+const handleClick = (i: number) => {
+  if (winner || current.squares[i]) {
+    return
+  }
+
+  const next: Step = (({ squares, xIsNext }) => {
+    const nextSquares = squares.slice() as BoardState
+    nextSquares[i] = xIsNext ? 'X' : 'O'
+    return {
+      squares: nextSquares,
+      xIsNext: !xIsNext,
+    }
+  }) (current)
+
+  setState(({ history, stepNumber }) => {
+    const newHistory = history.slice(0, stepNumber + 1).concat(next)
+
+    return {
+      history: newHistory,
+      stepNumber: newHistory.length - 1,
+    }
+  })
+}
 }
