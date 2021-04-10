@@ -110,4 +110,13 @@ const jumpTo = (move: number) => {
     stepNumber: move,
   }))
 }
+
+const moves = state.history.map((step, move) => {
+  const desc = move > 0 ? `Go to move #${move}` : 'Go to game start'
+  return (
+    <li key={move}>
+      <button onClick={() => jumpTo(move)}>{desc}</button>
+    </li>
+  )
+})
 }
