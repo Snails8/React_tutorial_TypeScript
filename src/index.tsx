@@ -103,4 +103,11 @@ const handleClick = (i: number) => {
     }
   })
 }
+
+const jumpTo = (move: number) => {
+  setState(prev => ({
+    ...prev,
+    stepNumber: move,
+  }))
+}
 }
